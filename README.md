@@ -1,6 +1,6 @@
 # E-commerce-Online-Store-Germany-Database-Schema 
 
-**Entities and Attributes:**
+## Entities and Attributes:
 
 1. **product**
     - product_id (PK)
@@ -55,7 +55,6 @@
    - store_address
    - store_city 
 
-
 10. **customer**
    - customer_id (PK)
    - first_name
@@ -74,7 +73,6 @@
    - delivery_city 
    - shipping_cost
  
-
 12. **order_item**
    - order_id (PK, FK)
    - product_id (PK, FK)
@@ -105,7 +103,7 @@
    - product_id (PK, FK)
    - quantity
 
-**Relationships and Cardinalities:**
+## Relationships and Cardinalities:
 
 1. **product (M) ↔ (1) manufacturer**: Many-to-One
    - Explanation: Each product is assigned to one manufacturer, but a manufacturer can produce many products.
@@ -129,7 +127,7 @@
    - In the subcategory table, category_id is a foreign key that links back to the category table.
 
 5. **product (1) ↔ (M) inventory**: One-to-Many 
-   - Explanation: Each product has separate stock entries per store. A product can have multiple inventory entries across various stores, but each inventory entry belongs to one product.
+   - Explanation: Each product has separate stock entries per store. A product can have multiple inventory entries across various stores,         but each inventory entry belongs to one product.
 
    - In the inventory table, product_id is a foreign key that links back to the product table.
 
@@ -139,7 +137,7 @@
    - In the inventory table, store_id is a foreign key that links back to the store table.
 
 7. **product (1) ↔ (M) graduated_price**: One-to-Many
-   - Explanation: A product can have multiple graduated prices based on different quantity ranges, but each graduated price refers to one product. 
+   - Explanation: A product can have multiple graduated prices based on different quantity ranges, but each graduated price refers to one         product. 
 
    - In the graduated_price table, product_id is a foreign key that links back to the product table.
 
@@ -185,12 +183,12 @@
    - In the review_rating table, product_id is a foreign key that links back to the product table.
    
 16. **customer(1) ↔ (M) review_rating**: One-to-Many (Unique: customer_id, product_id)
-   - Explanation: A customer can leave multiple reviews (one for each product), but the combination of customer_id and product_id should be unique, meaning a customer can only review a product once.
+   - Explanation: A customer can leave multiple reviews (one for each product), but the combination of customer_id and product_id                 should be unique, meaning a customer can only review a product once.
 
-   - In the review_rating table, customer_id is a foreign key that links back to the customer table, and product_id is a foreign key that links back to the product table.
-   
+   - In the review_rating table, customer_id is a foreign key that links back to the customer table, and product_id is a foreign key             that links back to the product table.
+
 17. **customer (1) ↔ (1) shopping_cart**: One-to-One (nullable for guests)
-   - Explanation: Each customer can have one shopping cart, and each shopping cart is associated with one customer. If a guest, the customer_id is nullable.
+   - Explanation: Each customer can have one shopping cart, and each shopping cart is associated with one customer. If a guest, the             customer_id is nullable.
 
    - In the shopping_cart table, customer_id is a foreign key that links back to the customer table.
 
@@ -202,10 +200,10 @@
 19. **product (M) ↔ (M) cart_item**: Many-to-Many
    - Explanation: A product can be in many shopping carts, and a shopping cart can have many products.
 
-   - In the cart_item table, product_id is a foreign key that links back to the product table, and cart_id links back to the shopping_cart table.
+   - In the cart_item table, product_id is a foreign key that links back to the product table, and cart_id links back to the shopping_cart        table.
 
 
-* Summary of Relationships:
+### Summary of Relationships:
 
 => One-to-Many (1:M) Relationships:
    1. product ↔ manufacturer
@@ -236,7 +234,7 @@
    1. customer ↔ shopping_cart (nullable for guests)
 
 
-**Notes:**
+## Notes:
 
 * Guest Orders Supported
    - Customers can place orders without an account (customer_id is nullable).
@@ -271,3 +269,5 @@
 
 * Multi-language Product Description Optimization
    - product_description is stored separately to prevent duplication.
+ 
+![ER Diagram](Images/ER_diagram.png)
